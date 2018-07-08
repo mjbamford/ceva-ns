@@ -1,0 +1,26 @@
+{
+  "name": "ceva-ns-api",
+  "version": "1.0.0",
+  "description": "Ceva Notification System Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mjbamford/ceva-ns.git"
+  },
+  "keywords": [
+    "Ceva",
+    "Notifications"
+  ],
+  "author": "Michael Bamford <michael@michaelbamford.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjbamford/ceva-ns/issues"
+  },
+  "homepage": "https://github.com/mjbamford/ceva-ns#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
