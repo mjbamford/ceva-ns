@@ -22,7 +22,6 @@ const styles = {
 }
 
 function handleMenu (event) {
-
 }
 
 function MenuAppBar (props) {

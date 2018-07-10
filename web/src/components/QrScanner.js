@@ -1,11 +1,32 @@
 import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
 import QrReader from 'react-qr-reader'
+
+const styles = {
+    qrReader: {
+        display: 'inline-block',
+        width: '250px',
+        boxShadow: '0 8px 10px 1px rgba(0, 0, 0, 0.25), 0 3px 14px 5px rgba(0, 0, 0, 0.15)',
+        '& section::before': {
+            top: 0,
+            left: 0,
+            zIndex: 1,
+            boxSizing: 'border-box',
+            border: '50px solid rgba(0, 0, 0, 0.3)',
+            boxShadow: 'inset 0 0 0 5px rgba(255, 255, 255, 0.5)',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            content: '""',
+        },
+    }
+}
 
 class QrScanner extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            delay: 300,
+            delay: 250,
             result: 'No result',
         }
         this.handleScan = this.handleScan.bind(this)
@@ -21,18 +42,21 @@ class QrScanner extends Component {
         console.error(err)
     }
     render() {
+        const { classes } = this.props
         return (
-            <div>
+            <React.Fragment>
                 <QrReader
                     delay={this.state.delay}
                     onError={this.handleError}
                     onScan={this.handleScan}
-                    style={{ width: '100%' }}
+                    facingMode="environment"
+                    className={classes.qrReader}
+                    showViewFinder={false}
                 />
                 <p>{this.state.result}</p>
-            </div>
+            </React.Fragment>
         )
     }
 }
 
-export default QrScanner
+export default withStyles(styles)(QrScanner)
