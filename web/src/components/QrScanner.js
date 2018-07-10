@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import QrReader from 'react-qr-reader'
 
@@ -27,7 +28,7 @@ class QrScanner extends Component {
         super(props)
         this.state = {
             delay: 250,
-            result: 'No result',
+            result: null
         }
         this.handleScan = this.handleScan.bind(this)
     }
@@ -44,17 +45,21 @@ class QrScanner extends Component {
     render() {
         const { classes } = this.props
         return (
-            <React.Fragment>
-                <QrReader
-                    delay={this.state.delay}
-                    onError={this.handleError}
-                    onScan={this.handleScan}
-                    facingMode="environment"
-                    className={classes.qrReader}
-                    showViewFinder={false}
-                />
-                <p>{this.state.result}</p>
-            </React.Fragment>
+            !this.state.result ?
+                (<React.Fragment>
+                    <QrReader
+                        delay={this.state.delay}
+                        onError={this.handleError}
+                        onScan={this.handleScan}
+                        facingMode="environment"
+                        className={classes.qrReader}
+                        showViewFinder={false}
+                    />
+                    <p>{this.state.result}</p>
+                </React.Fragment>
+            ) : (
+                <Redirect to='/products/666' />
+            )
         )
     }
 }
