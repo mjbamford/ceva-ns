@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -27,9 +27,9 @@ export const drawerListItems = (
       <ListItemIcon>
         <QrScanIcon />
       </ListItemIcon>
-      <Route to='/products/scan' render={
-        () => (<ListItemText primary="Scan QR Code" />)
-      } />
+      <Link to='/products/scan'>
+        <ListItemText primary="Scan QR Code"/>
+      </Link>
     </ListItem>
   </div>
 )
