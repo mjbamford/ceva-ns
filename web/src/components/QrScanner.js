@@ -32,9 +32,9 @@ class QrScanner extends Component {
             delay: 250,
             result: null
         }
-        this.handleScan = this.handleScan.bind(this)
     }
-    handleScan(data) {
+
+    handleScan = data => {
         if (data) {
             this.setState({
                 result: data,
@@ -42,9 +42,10 @@ class QrScanner extends Component {
             this.props.onScan(data)
         }
     }
-    handleError(err) {
+    handleError = err => {
         console.error(err)
     }
+
     render() {
         const { classes } = this.props
         return (
