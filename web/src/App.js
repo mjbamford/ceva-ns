@@ -29,7 +29,6 @@ class App extends Component {
   })
 
   handleScan = data => {
-    console.dir(data)
     this.setState({ scannedUrl: data })
   }
 
