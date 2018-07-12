@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import QrReader from 'react-qr-reader'
+import { Typography } from '../../node_modules/@material-ui/core';
 
 const styles = {
     qrReader: {
         display: 'inline-block',
         width: '250px',
         boxShadow: '0 8px 10px 1px rgba(0, 0, 0, 0.25), 0 3px 14px 5px rgba(0, 0, 0, 0.15)',
+        marginBottom: '1rem',
         '& section::before': {
             top: 0,
             left: 0,
@@ -43,7 +45,7 @@ class QrScanner extends Component {
         console.error(err)
     }
     render() {
-        const { classes } = this.props
+        const { classes, theme } = this.props
         return (
             !this.state.result ?
                 (<React.Fragment>
@@ -59,7 +61,9 @@ class QrScanner extends Component {
                         !!this.state.result ? (
                             <p>{this.state.result}</p>
                         ) : (
-                            <p>Point at Code to Scan {this.state.result}</p>
+                            <Typography variant="colorTextSecondary">
+                                <p>Point at Code to Scan {this.state.result}</p>
+                            </Typography>
                         )
                     }
                 </React.Fragment>
