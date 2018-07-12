@@ -40,18 +40,9 @@ class App extends Component {
           <CssBaseline />
           <Router>
             <Switch>
-              <Route path='/products/scan' render={
-                () => (<ProductsPage onScan={this.handleScan} />)}
-              />
-              <Route path='/products/:id' render={
-                ({ match }) => (
-                  <React.Fragment>
-                    <p>Match={match.params.id}</p>
-                    <p>State={this.state.scannedUrl}</p>
-                    <Link to='/products/scan'>Scan Again</Link>
-                  </React.Fragment>
-                )}
-              />
+              <Route path='/products' render={
+                () => (<ProductsPage onScan={this.handleScan} scannedUrl={this.state.scannedUrl} />)
+              }/>
             </Switch>
           </Router>
         </MuiThemeProvider>
