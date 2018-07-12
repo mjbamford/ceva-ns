@@ -55,7 +55,13 @@ class QrScanner extends Component {
                         className={classes.qrReader}
                         showViewFinder={false}
                     />
-                    <p>{this.state.result}</p>
+                    {
+                        !!this.state.result ? (
+                            <p>{this.state.result}</p>
+                        ) : (
+                            <p>Point at Code to Scan {this.state.result}</p>
+                        )
+                    }
                 </React.Fragment>
             ) : (
                 <Redirect to='/products/666' />

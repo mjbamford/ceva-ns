@@ -10,7 +10,6 @@ import MenuIcon from '@material-ui/icons/Menu'
 
 const styles = {
   root: {
-    flexGrow: 1,
   },
   flex: {
     flex: 1,
@@ -21,33 +20,31 @@ const styles = {
   },
 }
 
-function handleMenu (event) {
+function handleMenu(event) {
 }
 
-function MenuAppBar (props) {
+function MenuAppBar(props) {
   const { classes } = props
   const open = false
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex} >
-            Products
+    <AppBar position="static" color="primary">
+      <Toolbar>
+        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="title" color="inherit" className={classes.flex} >
+          Products
           </Typography>
-          <IconButton
-            aria-owns={open ? 'menu-appbar' : null}
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </div>
+        <IconButton
+          aria-owns={open ? 'menu-appbar' : null}
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   )
 }
 

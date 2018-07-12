@@ -6,7 +6,7 @@ import Logo from '../components/Logo'
 
 const styles = {
     appBar: {
-        flex: 'none'
+        // flex: 'none'
     },
     main: {
         flex: '1 0 auto',
