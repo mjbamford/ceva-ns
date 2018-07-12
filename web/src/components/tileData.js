@@ -1,63 +1,35 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import DraftsIcon from '@material-ui/icons/Drafts'
-import StarIcon from '@material-ui/icons/Star'
-import SendIcon from '@material-ui/icons/Send'
-import MailIcon from '@material-ui/icons/Mail'
-import DeleteIcon from '@material-ui/icons/Delete'
-import ReportIcon from '@material-ui/icons/Report'
+import QrScanIcon from '@material-ui/icons/Fullscreen'
+import Logo from './Logo'
+import Typography from '../../node_modules/@material-ui/core/Typography';
 
-export const mailFolderListItems = (
+export const drawerHeaderListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <InboxIcon />
-      </ListItemIcon>
-      <ListItemText primary="Inbox" />
+    <ListItem>
+      <Logo />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <StarIcon />
-      </ListItemIcon>
-      <ListItemText primary="Starred" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <SendIcon />
-      </ListItemIcon>
-      <ListItemText primary="Send mail" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <DraftsIcon />
-      </ListItemIcon>
-      <ListItemText primary="Drafts" />
+    <ListItem>
+      <div>
+        <Typography variant="subheading">Notification System</Typography>
+        <Typography variant="body1">Together, beyong animal health</Typography>
+      </div>
     </ListItem>
   </div>
 )
 
-export const otherMailFolderListItems = (
+export const drawerListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-        <MailIcon />
+        <QrScanIcon />
       </ListItemIcon>
-      <ListItemText primary="All mail" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <DeleteIcon />
-      </ListItemIcon>
-      <ListItemText primary="Trash" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ReportIcon />
-      </ListItemIcon>
-      <ListItemText primary="Spam" />
+      <Route to='/products/scan' render={
+        () => (<ListItemText primary="Scan QR Code" />)
+      } />
     </ListItem>
   </div>
 )
