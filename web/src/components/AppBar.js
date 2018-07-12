@@ -20,32 +20,38 @@ const styles = {
   },
 }
 
-function handleMenu(event) {
-}
+class MenuAppBar extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-function MenuAppBar(props) {
-  const { classes } = props
-  const open = false
-  return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="title" color="inherit" className={classes.flex} >
-          Products
+  handleMenu = event => {}
+
+  render() {
+    const { classes } = this.props
+    const open = false
+
+    return (
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="title" color="inherit" className={classes.flex} >
+            Products
           </Typography>
-        <IconButton
-          aria-owns={open ? 'menu-appbar' : null}
-          aria-haspopup="true"
-          onClick={handleMenu}
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
-  )
+          <IconButton
+            aria-owns={open ? 'menu-appbar' : null}
+            aria-haspopup="true"
+            onClick={this.handleMenu}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    )
+  }
 }
 
 MenuAppBar.propTypes = {
