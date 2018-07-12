@@ -47,7 +47,7 @@ class QrScanner extends Component {
     }
 
     render() {
-        const { classes } = this.props
+        const { classes, redirectTo } = this.props
         return (
             !this.state.result ?
                 (<React.Fragment>
@@ -70,7 +70,7 @@ class QrScanner extends Component {
                     }
                 </React.Fragment>
             ) : (
-                <Redirect to='/products/666' />
+                <Redirect push to={redirectTo} />
             )
         )
     }

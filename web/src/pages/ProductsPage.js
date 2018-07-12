@@ -31,18 +31,16 @@ function ProductsPage(props) {
                 <Route path='/products/scan' render={
                     () => (
                         <main className={classes.main}>
-                            <QrScanner onScan={onScan} />
+                            <QrScanner onScan={onScan} redirectTo='/products/666' />
                             <Logo />
                         </main>
                     )
                 } />
                 <Route path='/products/:id' render={
-                    ({ match }) => (
-                        <React.Fragment>
-                            <Typography className={classes.scannedUrl} align="center" variant='body1'>
-                                {scannedUrl}
-                            </Typography>
-                        </React.Fragment>
+                    () => (
+                        <Typography className={classes.scannedUrl} align="center" variant='body1'>
+                            {scannedUrl}
+                        </Typography>
                     )}
                 />
             </Switch>
