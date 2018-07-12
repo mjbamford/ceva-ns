@@ -18,12 +18,12 @@ const styles = {
 }
 
 function ProductsPage(props) {
-    const { classes } = props
+    const { classes, onScan } = props
     return (
         <React.Fragment>
             <AppBar classes={{ root: classes.appBar }} className={styles.appBar} />
             <main className={classes.main}>
-                <QrScanner />
+                <QrScanner onScan={onScan} />
                 <Logo />
             </main>
         </React.Fragment>

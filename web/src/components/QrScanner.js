@@ -39,6 +39,7 @@ class QrScanner extends Component {
             this.setState({
                 result: data,
             })
+            this.props.onScan(data)
         }
     }
     handleError(err) {

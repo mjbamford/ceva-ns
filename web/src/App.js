@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import ProductsPage from './pages/ProductsPage'
@@ -24,6 +24,15 @@ const theme = createMuiTheme({
 })
 
 class App extends Component {
+  state = ({
+    scannedUrl: null
+  })
+
+  handleScan = data => {
+    console.dir(data)
+    this.setState({ scannedUrl: data })
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,9 +40,17 @@ class App extends Component {
           <CssBaseline />
           <Router>
             <Switch>
-              <Route path='/products/scan' component={ProductsPage} />
+              <Route path='/products/scan' render={
+                () => (<ProductsPage onScan={this.handleScan} />)}
+              />
               <Route path='/products/:id' render={
-                ({ match }) => (<h1>SUCCESS! {match.params.id}</h1>)}
+                ({ match }) => (
+                  <React.Fragment>
+                    <p>Match={match.params.id}</p>
+                    <p>State={this.state.scannedUrl}</p>
+                    <Link to='/products/scan'>Scan Again</Link>
+                  </React.Fragment>
+                )}
               />
             </Switch>
           </Router>

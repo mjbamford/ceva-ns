@@ -30,7 +30,7 @@ const styles = {
 class MenuAppBar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { drawer: true }
+    this.state = { drawer: false }
   }
 
   handleMenu = event => { }
