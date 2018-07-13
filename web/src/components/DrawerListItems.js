@@ -4,8 +4,9 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import QrScanIcon from '@material-ui/icons/Fullscreen'
+import CheckCircle from '@material-ui/icons/CheckCircle'
 import Logo from './Logo'
-import Typography from '../../node_modules/@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 
 export const drawerHeaderListItems = (
   <div>
@@ -29,6 +30,14 @@ export const drawerListItems = (
       </ListItemIcon>
       <Link to='/products/scan'>
         <ListItemText primary="Scan QR Code"/>
+      </Link>
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <CheckCircle />
+      </ListItemIcon>
+      <Link to='/products/check'>
+        <ListItemText primary="Stock Check"/>
       </Link>
     </ListItem>
   </div>

@@ -10,7 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import { drawerHeaderListItems, drawerListItems } from './tileData'
+import { drawerHeaderListItems, drawerListItems } from './DrawerListItems'
 
 const styles = {
   root: {
