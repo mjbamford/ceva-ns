@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import ProductsPage from './pages/ProductsPage'
@@ -42,6 +42,7 @@ class App extends Component {
               <Route path='/products' render={
                 () => (<ProductsPage onScan={this.handleScan} scannedUrl={this.state.scannedUrl} />)
               }/>
+              <Redirect from='/' to='/products/scan' />
             </Switch>
           </Router>
         </MuiThemeProvider>
