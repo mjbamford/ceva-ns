@@ -70,7 +70,7 @@ class MenuAppBar extends React.Component {
               color="inherit"
               aria-owns={this.state.drawer ? 'menu-appbar' : null}
               aria-haspopup="true" >
-              <AccountCircle />
+              {/* <AccountCircle /> */}
             </IconButton>
           </Toolbar>
         </AppBar>

@@ -3,11 +3,12 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import QrReader from 'react-qr-reader'
 import YesNoIcon from './YesNoIcon'
+import './animation.css'
 
 const scannerBox = {
   display: 'inline-block',
-  width: '250px',
-  height: '250px',
+  width: '210px',
+  height: '210px',
   marginBottom: '2rem',
 }
 
@@ -25,7 +26,7 @@ const styles = {
       left: 0,
       zIndex: 1,
       boxSizing: 'border-box',
-      border: '50px solid rgba(0, 0, 0, 0.3)',
+      border: '40px solid rgba(0, 0, 0, 0.3)',
       boxShadow: 'inset 0 0 0 5px rgba(255, 255, 255, 0.5)',
       position: 'absolute',
       width: '100%',
@@ -34,6 +35,8 @@ const styles = {
     },
   }
 }
+
+const StyledYesNoIcon = withStyles(styles)(YesNoIcon)
 
 class QrChecker extends Component {
   constructor(props) {
@@ -62,7 +65,6 @@ class QrChecker extends Component {
 
   render() {
     const { classes } = this.props
-    const StyledYesNoIcon = withStyles(styles)(YesNoIcon)
     const Instructions = ({ children }) => (
         <Typography paragraph variant="body1" color="textSecondary">
           {children}

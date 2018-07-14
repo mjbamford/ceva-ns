@@ -7,7 +7,7 @@ import { Typography } from '@material-ui/core';
 const styles = {
   qrReader: {
     display: 'inline-block',
-    width: '250px',
+    width: '210px',
     boxShadow: '0 8px 10px 1px rgba(0, 0, 0, 0.25), 0 3px 14px 5px rgba(0, 0, 0, 0.15)',
     marginBottom: '2rem',
     '& section::before': {
@@ -15,7 +15,7 @@ const styles = {
       left: 0,
       zIndex: 1,
       boxSizing: 'border-box',
-      border: '50px solid rgba(0, 0, 0, 0.3)',
+      border: '40px solid rgba(0, 0, 0, 0.3)',
       boxShadow: 'inset 0 0 0 5px rgba(255, 255, 255, 0.5)',
       position: 'absolute',
       width: '100%',
