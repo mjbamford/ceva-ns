@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography';
 import QrReader from 'react-qr-reader'
-import { Typography } from '@material-ui/core';
 
 const styles = {
   qrReader: {
     display: 'inline-block',
-    width: '210px',
+    width: '180px',
+    height: '180px',
     boxShadow: '0 8px 10px 1px rgba(0, 0, 0, 0.25), 0 3px 14px 5px rgba(0, 0, 0, 0.15)',
     marginBottom: '2rem',
     '& section::before': {

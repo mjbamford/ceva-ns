@@ -7,8 +7,8 @@ import './animation.css'
 
 const scannerBox = {
   display: 'inline-block',
-  width: '210px',
-  height: '210px',
+  width: '180px',
+  height: '180px',
   marginBottom: '2rem',
 }
 
