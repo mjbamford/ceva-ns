@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core';
 import AppBar from '../components/AppBar'
 import QrScanner from '../components/QrScanner'
+import QrChecker from '../components/QrChecker'
 import Logo from '../components/Logo'
-import { Typography } from '../../node_modules/@material-ui/core';
 
 const styles = {
     appBar: {
@@ -26,7 +27,7 @@ function ProductsPage(props) {
     const { classes, onScan, scannedUrl } = props
     return (
         <React.Fragment>
-            <AppBar classes={{ root: classes.appBar }} className={styles.appBar} />
+            <AppBar classes={{root: classes.appBar}} className={styles.appBar} />
             <Switch>
                 <Route path='/products/scan' render={
                     () => (
@@ -36,6 +37,16 @@ function ProductsPage(props) {
                         </main>
                     )
                 } />
+
+                <Route path='/products/check' render={
+                    () => (
+                        <main className={classes.main}>
+                            <QrChecker />
+                            <Logo />
+                        </main>
+                    )
+                } />
+
                 <Route path='/products/:id' render={
                     () => (
                         <Typography className={classes.scannedUrl} align="center" variant='body1'>
