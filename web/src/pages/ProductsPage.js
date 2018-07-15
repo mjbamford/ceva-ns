@@ -28,23 +28,28 @@ function ProductsPage(props) {
     const { classes, onScan, scannedUrl } = props
     return (
         <React.Fragment>
-            <AppBar title="Products" />
             <Switch>
                 <Route path='/products/scan' render={
                     () => (
-                        <main className={classes.main}>
-                            <QrScanner onScan={onScan} redirectTo='/products/666' />
-                            <Logo />
-                        </main>
+                        <React.Fragment>
+                            <AppBar title="Products" />
+                            <main className={classes.main}>
+                                <QrScanner onScan={onScan} redirectTo='/products/666' />
+                                <Logo />
+                            </main>
+                        </React.Fragment>
                     )
                 } />
 
                 <Route path='/products/check' render={
                     () => (
-                        <main className={classes.main}>
-                            <QrChecker />
-                            <Logo />
-                        </main>
+                        <React.Fragment>
+                            <AppBar title="Stock Check" />
+                            <main className={classes.main}>
+                                <QrChecker />
+                                <Logo />
+                            </main>
+                        </React.Fragment>
                     )
                 } />
 

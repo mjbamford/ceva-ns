@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import CheckCircle from '@material-ui/icons/CheckCircle'
+import HelpIcon from '@material-ui/icons/LiveHelp'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -40,6 +41,14 @@ export const drawerListItems = (
       </ListItemIcon>
       <Link to='/products/check'>
         <ListItemText primary="Stock Check"/>
+      </Link>
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <HelpIcon />
+      </ListItemIcon>
+      <Link to='/help'>
+        <ListItemText primary="Help"/>
       </Link>
     </ListItem>
   </div>

@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 // import AccountCircle from '@material-ui/icons/AccountCircle'
+import HelpIcon from '@material-ui/icons/LiveHelp'
 import AppBar from '@material-ui/core/AppBar'
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton'
@@ -26,6 +28,9 @@ const styles = {
   },
   list: {
     width: '16rem'
+  },
+  link: {
+    color: 'inherit'
   }
 }
 
@@ -69,12 +74,11 @@ class MenuAppBar extends React.Component {
               </Typography>
             }
             {children}
-            <IconButton
-              color="inherit"
-              aria-owns={this.state.drawer ? 'menu-appbar' : null}
-              aria-haspopup="true" >
-              {/* <AccountCircle /> */}
-            </IconButton>
+            <Link className={classes.link} to='/help'>
+              <IconButton color="inherit">
+                <HelpIcon />
+              </IconButton>
+            </Link>
           </Toolbar>
         </AppBar>
         <SwipeableDrawer open={this.state.drawer}
