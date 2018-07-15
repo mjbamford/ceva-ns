@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import { withStyles } from '@material-ui/core/styles'
 // import AccountCircle from '@material-ui/icons/AccountCircle'
 import AppBar from '@material-ui/core/AppBar'
@@ -10,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+
 import { drawerHeaderListItems, drawerListItems } from './DrawerListItems'
 
 const styles = {
@@ -33,15 +35,12 @@ class MenuAppBar extends React.Component {
     this.state = { drawer: false }
   }
 
-  handleMenu = event => { }
-
   toggleDrawer = open => () => {
     this.setState({ drawer: open })
   }
 
   render() {
-    const { classes } = this.props
-
+    const { title, classes, children } = this.props
     const drawerList = (
       <div className={classes.list}>
         <List>
@@ -63,9 +62,13 @@ class MenuAppBar extends React.Component {
               aria-label="Menu">
               <MenuIcon />
             </IconButton>
-            <Typography variant="title" color="inherit" className={classes.flex}>
-              Products
-            </Typography>
+            {
+              title &&
+              <Typography variant="title" color="inherit" className={classes.flex}>
+                {title}
+              </Typography>
+            }
+            {children}
             <IconButton
               color="inherit"
               aria-owns={this.state.drawer ? 'menu-appbar' : null}

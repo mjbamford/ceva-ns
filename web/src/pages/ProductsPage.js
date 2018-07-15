@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+
 import AppBar from '../components/AppBar'
 import QrScanner from '../components/QrScanner'
 import QrChecker from '../components/QrChecker'
@@ -27,7 +28,7 @@ function ProductsPage(props) {
     const { classes, onScan, scannedUrl } = props
     return (
         <React.Fragment>
-            <AppBar classes={{root: classes.appBar}} className={styles.appBar} />
+            <AppBar title="Products" />
             <Switch>
                 <Route path='/products/scan' render={
                     () => (

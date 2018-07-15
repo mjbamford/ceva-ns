@@ -1,22 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
+import CheckCircle from '@material-ui/icons/CheckCircle'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import QrScanIcon from '@material-ui/icons/Fullscreen'
-import CheckCircle from '@material-ui/icons/CheckCircle'
-import Logo from './Logo'
 import Typography from '@material-ui/core/Typography';
+
+import Logo from './Logo'
 
 export const drawerHeaderListItems = (
   <div>
     <ListItem>
-      <Logo />
+      <Link to='/'><Logo /></Link>
     </ListItem>
     <ListItem>
       <div>
         <Typography variant="subheading">Notification System</Typography>
-        <Typography variant="body1">Together, beyong animal health</Typography>
+        <Typography variant="body1">Together, beyond animal health</Typography>
       </div>
     </ListItem>
   </div>
