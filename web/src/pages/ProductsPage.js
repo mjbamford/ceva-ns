@@ -1,6 +1,9 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
+
 import { withStyles } from '@material-ui/core/styles'
+import HelpIcon from '@material-ui/icons/LiveHelp'
+import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography';
 
 import AppBar from '../components/AppBar'
@@ -14,6 +17,9 @@ const styles = {
     },
     scannedUrl: {
         marginTop: '2rem'
+    },
+    link: {
+        color: 'inherit'
     },
     main: {
         flex: '1 0 auto',
@@ -32,7 +38,13 @@ function ProductsPage(props) {
                 <Route path='/products/scan' render={
                     () => (
                         <React.Fragment>
-                            <AppBar title="Products" />
+                            <AppBar title="Products" >
+                                <Link className={classes.link} to='/help'>
+                                    <IconButton color="inherit">
+                                        <HelpIcon />
+                                    </IconButton>
+                                </Link>
+                            </AppBar>
                             <main className={classes.main}>
                                 <QrScanner onScan={onScan} redirectTo='/products/666' />
                                 <Logo />
@@ -55,9 +67,12 @@ function ProductsPage(props) {
 
                 <Route path='/products/:id' render={
                     () => (
-                        <Typography className={classes.scannedUrl} align="center" variant='body1'>
-                            {scannedUrl}
-                        </Typography>
+                        <React.Fragment>
+                            <AppBar title="Ceva" />
+                            <Typography className={classes.scannedUrl} align="center" variant='body1'>
+                                {scannedUrl}
+                            </Typography>
+                        </React.Fragment>
                     )}
                 />
             </Switch>

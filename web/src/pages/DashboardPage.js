@@ -15,6 +15,12 @@ const styles = {
   root: {
     marginTop: '2rem'
   },
+  flex: {
+    flex: 1
+  },
+  link: {
+    color: 'inherit'
+  },
   tile: {
     '& p': {
       whiteSpace: 'nowrap',
@@ -27,10 +33,10 @@ const styles = {
   }
 }
 
-function Dashboard(props) {
+function DashboardPage(props) {
   const { classes } = props
   const tiles = [
-    { 
+    {
       icon: <QrScanIcon style={{ fontSize: 56 }} />,
       caption: 'Scan QR Code',
       path: '/products/scan'
@@ -44,9 +50,9 @@ function Dashboard(props) {
 
   return (
     <React.Fragment>
-      <AppBar >
+      <AppBar>
         {/* TODO: <Logo /> */}
-        <Typography variant="title" color="inherit">
+        <Typography variant="title" color="inherit" className={classes.flex}>
           Notification System
         </Typography>
       </AppBar>
@@ -68,4 +74,4 @@ function Dashboard(props) {
   )
 }
 
-export default withStyles(styles)(Dashboard)
+export default withStyles(styles)(DashboardPage)
