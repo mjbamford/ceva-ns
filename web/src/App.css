@@ -11,15 +11,15 @@ a {
   flex-direction: column;
 }
 
-.dashboard-icon img {
-  width: 56px;
-  height: 56px;
-  display: block;
-  margin: 0 auto;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  opacity: 0.75;
-}
+/* .dashboard-icon img { */
+/*   width: 56px; */
+/*   height: 56px; */
+/*   display: block; */
+/*   margin: 0 auto; */
+/*   -webkit-filter: grayscale(100%); */
+/*   filter: grayscale(100%); */
+/*   opacity: 0.75; */
+/* } */
 
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;

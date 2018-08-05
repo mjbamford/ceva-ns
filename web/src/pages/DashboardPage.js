@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import { withStyles } from '@material-ui/core/styles'
 import CheckCircle from '@material-ui/icons/CheckCircle'
 import GridList from '@material-ui/core/GridList'
@@ -9,7 +8,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import QrScanIcon from '@material-ui/icons/Fullscreen'
 import Typography from '@material-ui/core/Typography'
 import VialIcon from '../icons/VialIcon'
-
 import AppBar from '../components/AppBar'
 
 const styles = {
@@ -31,8 +29,19 @@ const styles = {
       display: 'block',
       margin: '0 auto'
     }
+  },
+  icon: {
+    width: '56px',
+    height: '56px',
+    display: 'block',
+    margin: '0 auto',
+    '-webkit-filter': 'grayscale(100%)',
+    filter: 'grayscale(100%)',
+    opacity: 0.75
   }
 }
+
+const DashboardVialIcon = withStyles(styles)(VialIcon)
 
 function DashboardPage(props) {
   const { classes } = props
@@ -48,7 +57,7 @@ function DashboardPage(props) {
       path: '/products/check'
     },
     {
-      icon: <VialIcon />,
+      icon: <DashboardVialIcon />,
       caption: 'Products',
       path: '/products'
     }

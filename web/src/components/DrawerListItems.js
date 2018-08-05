@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles'
 import CheckCircle from '@material-ui/icons/CheckCircle'
 import HelpIcon from '@material-ui/icons/LiveHelp'
 import ListItem from '@material-ui/core/ListItem'
@@ -7,7 +8,17 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import QrScanIcon from '@material-ui/icons/Fullscreen'
 import Typography from '@material-ui/core/Typography';
+import VialIcon from '../icons/VialIcon'
 import Logo from './Logo'
+
+const styles = {
+  icon: {
+    width: '24px',
+    marginRight: '16px',
+  }
+}
+
+const SmallVialIcon = withStyles(styles)(VialIcon)
 
 export const drawerHeaderListItems = (
   <div>
@@ -39,6 +50,14 @@ export const drawerListItems = (
       </ListItemIcon>
       <Link to='/products/check'>
         <ListItemText primary="Stock Check"/>
+      </Link>
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <SmallVialIcon />
+      </ListItemIcon>
+      <Link to='/products'>
+        <ListItemText primary="Products"/>
       </Link>
     </ListItem>
     <ListItem button>
