@@ -8,6 +8,7 @@ import GridListTile from '@material-ui/core/GridListTile'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import QrScanIcon from '@material-ui/icons/Fullscreen'
 import Typography from '@material-ui/core/Typography'
+import VialIcon from '../icons/VialIcon'
 
 import AppBar from '../components/AppBar'
 
@@ -45,6 +46,11 @@ function DashboardPage(props) {
       icon: <CheckCircle style={{ fontSize: 56 }} />,
       caption: 'Stock Check',
       path: '/products/check'
+    },
+    {
+      icon: <VialIcon />,
+      caption: 'Products',
+      path: '/products'
     }
   ]
 
