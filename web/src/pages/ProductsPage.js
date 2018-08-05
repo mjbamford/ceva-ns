@@ -10,6 +10,7 @@ import AppBar from '../components/AppBar'
 import QrScanner from '../components/QrScanner'
 import QrChecker from '../components/QrChecker'
 import Logo from '../components/Logo'
+import ProductList from '../components/ProductList'
 
 const styles = {
     appBar: {
@@ -34,48 +35,59 @@ function ProductsPage(props) {
     const { classes, onScan, scannedUrl } = props
     return (
         <React.Fragment>
-            <Switch>
-                <Route path='/products/scan' render={
-                    () => (
-                        <React.Fragment>
-                            <AppBar title="Products" >
-                                <Link className={classes.link} to='/help'>
-                                    <IconButton color="inherit">
-                                        <HelpIcon />
-                                    </IconButton>
-                                </Link>
-                            </AppBar>
-                            <main className={classes.main}>
-                                <QrScanner onScan={onScan} redirectTo='/products/666' />
-                                <Logo />
-                            </main>
-                        </React.Fragment>
-                    )
-                } />
+          <Switch>
+            <Route path='/products/scan' render={
+              () => (
+                <React.Fragment>
+                  <AppBar title="Products" >
+                    <Link className={classes.link} to='/help'>
+                      <IconButton color="inherit">
+                        <HelpIcon />
+                      </IconButton>
+                    </Link>
+                  </AppBar>
+                  <main className={classes.main}>
+                    <QrScanner onScan={onScan} redirectTo='/products/666' />
+                    <Logo />
+                  </main>
+                </React.Fragment>
+              )}
+            />
 
-                <Route path='/products/check' render={
-                    () => (
-                        <React.Fragment>
-                            <AppBar title="Stock Check" />
-                            <main className={classes.main}>
-                                <QrChecker />
-                                <Logo />
-                            </main>
-                        </React.Fragment>
-                    )
-                } />
+            <Route path='/products/check' render={
+              () => (
+                <React.Fragment>
+                  <AppBar title="Stock Check" />
+                  <main className={classes.main}>
+                    <QrChecker />
+                    <Logo />
+                  </main>
+                </React.Fragment>
+              )}
+            />
 
-                <Route path='/products/:id' render={
-                    () => (
-                        <React.Fragment>
-                            <AppBar title="Ceva" />
-                            <Typography className={classes.scannedUrl} align="center" variant='body1'>
-                                {scannedUrl}
-                            </Typography>
-                        </React.Fragment>
-                    )}
-                />
-            </Switch>
+            <Route path='/products/:id' render={
+              () => (
+                <React.Fragment>
+                  <AppBar title="Ceva" />
+                  <Typography className={classes.scannedUrl} align="center" variant='body1'>
+                    {scannedUrl}
+                  </Typography>
+                </React.Fragment>
+              )}
+            />
+
+            <Route path='/products' render={
+              () => (
+                <React.Fragment>
+                  <AppBar title="Products" />
+                  <main>
+                    <ProductList />
+                  </main>
+                </React.Fragment>
+              )}
+            />
+          </Switch>
         </React.Fragment>
     )
 }

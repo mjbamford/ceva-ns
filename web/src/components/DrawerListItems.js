@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import CheckCircle from '@material-ui/icons/CheckCircle'
 import HelpIcon from '@material-ui/icons/LiveHelp'
 import ListItem from '@material-ui/core/ListItem'
@@ -8,7 +7,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import QrScanIcon from '@material-ui/icons/Fullscreen'
 import Typography from '@material-ui/core/Typography';
-
 import Logo from './Logo'
 
 export const drawerHeaderListItems = (
