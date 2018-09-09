@@ -1,14 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
-import AddIcon from '@material-ui/icons/Add'
 import Button from '@material-ui/core/Button'
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 import ProductCard from '../components/ProductCard'
 import ProductPane from './ProductPane'
-
 import ProductModel from '../models/Product'
 
 const styles = theme => ({
@@ -29,6 +29,9 @@ const styles = theme => ({
     position: 'absolute',
     right: theme.spacing.unit * 2
   },
+  link: {
+    color: 'inherit'
+  },
   seeAlsoTitle: {
     marginBottom: theme.spacing.unit * 2
   }
@@ -40,7 +43,9 @@ function Product (props) {
     <div>
       <Paper className={classes.paper} elevation={0}>
         <Button variant="fab" color="primary" aria-label="Add" className={classes.fab}>
-          <AddIcon />
+          <Link to={{ pathname: '/reminders/new' }} className={classes.link}>
+            <CalendarTodayIcon />
+          </Link>
         </Button>
         <img src={product.imageUrl} alt={product.name} className={classes.image}/>
         <Typography variant="headline" component="h2">

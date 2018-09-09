@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
-import HelpPage from './pages/HelpPage'
 import DashboardPage from './pages/DashboardPage'
+import HelpPage from './pages/HelpPage'
 import ProductsPage from './pages/ProductsPage'
+import RemindersController from './controllers/RemindersController'
 import './App.css';
 
 const theme = createMuiTheme({
@@ -46,6 +47,7 @@ class App extends Component {
                 () => (<ProductsPage onScan={this.handleScan} scannedUrl={this.state.scannedUrl} />)
               }/>
               <Route path='/help' component={HelpPage} />
+              <Route path='/reminders' component={RemindersController} />
               <Route path='/' component={DashboardPage} />
             </Switch>
           </Router>
