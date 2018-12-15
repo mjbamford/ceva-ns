@@ -5,11 +5,6 @@ class ProductsController < ApiController
     @products = Product.all
   end
 
-  # GET /products/1
-  def show
-    render json: @product
-  end
-
   # POST /products
   def create
     @product = Product.new(product_params)
