@@ -11,5 +11,48 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :name, :description, :information, :indications, :directions
+  permit_params :name, :description, :information, :indications, :directions, :image
+
+  filter :name
+  filter :description
+  filter :information
+  filter :indications
+  filter :directions
+
+  index do
+      id_column
+      column "Image" do |product|
+        image_tag product.image.variant resize: '100x100'
+      end
+      column :name
+      column :description
+      column :updated_at
+      actions
+  end
+
+  show do
+    attributes_table do
+      row :name
+      row :description
+      row :image do |product|
+        image_tag product.image.variant resize: '300x300'
+      end
+      row :information
+      row :indications
+      row :directions
+    end
+  end
+
+  form html: { multipart: true } do |f|
+    semantic_errors
+    inputs do
+      input :name
+      input :image, as: :file
+      input :description
+      input :information
+      input :indications
+      input :directions
+    end
+    actions
+  end
 end
