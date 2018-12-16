@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import HelpPage from './pages/HelpPage'
 import DashboardPage from './pages/DashboardPage'
+import NotFoundPage from './pages/NotFoundPage'
 import ProductsPage from './pages/ProductsPage'
 import './App.css';
 
@@ -69,6 +70,7 @@ class App extends Component {
               }/>
               <Route path='/help' component={HelpPage} />
               <Route path='/' component={DashboardPage} />
+              <Route component={NotFoundPage} />
             </Switch>
           </Router>
         </MuiThemeProvider>
