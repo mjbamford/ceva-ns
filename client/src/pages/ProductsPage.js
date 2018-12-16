@@ -9,8 +9,7 @@ import QrScanner from '../components/QrScanner'
 import QrChecker from '../components/QrChecker'
 import Logo from '../components/Logo'
 import ProductList from '../components/ProductList'
-import Product from '../components/Product'
-import productModel from '../models/Product'
+import ProductPage from './ProductPage'
 
 const styles = {
   appBar: {
@@ -69,7 +68,6 @@ function ProductsPage(props) {
         <Route path='/products/:id' render={
             ({ match }) => {
               const { id } = match.params
-              const product = productModel.find(id)
               return (
                 scannedUrl ? (
                   <React.Fragment>
@@ -79,10 +77,7 @@ function ProductsPage(props) {
                     </Typography>
                   </React.Fragment>
                 ) : (
-                  <React.Fragment>
-                    <AppBar title={product.name} />
-                    <Product product={product} />
-                  </React.Fragment>
+                  <ProductPage id={id} />
                 )
             )}}
         />

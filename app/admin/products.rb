@@ -22,7 +22,9 @@ ActiveAdmin.register Product do
   index do
       id_column
       column "Image" do |product|
-        image_tag product.image.variant resize: '100x100'
+        if product.image.attached?
+          image_tag product.image.variant resize: '100x100'
+        end
       end
       column :name
       column :description

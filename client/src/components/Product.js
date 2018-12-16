@@ -2,7 +2,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
-import ProductPane from './ProductPane'
+import ExpansionPanels from './ProductExpansionPanels'
 
 const styles = theme => ({
   pos: {
@@ -28,10 +28,10 @@ function Product (props) {
         <Typography variant="headline" component="h2">
           {product.name}
         </Typography>
-        {/* <Typography className={classes.pos} color="textSecondary"> */}
-        {/*   {product.description} */}
-        {/* </Typography> */}
-        <ProductPane product={product}/>
+        <Typography className={classes.pos} color="textSecondary">
+          {product.description}
+        </Typography>
+        <ExpansionPanels product={product}/>
       </Paper>
       {/* <Typography> */}
       {/*   See Also */}
