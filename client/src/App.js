@@ -1,36 +1,58 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+
+import HelpPage from './pages/HelpPage'
+import DashboardPage from './pages/DashboardPage'
+import ProductsPage from './pages/ProductsPage'
 import './App.css';
 
-class App extends Component {
-  componentDidMount() {
-    fetch('/api/products')
-    .then(resp => resp.json())
-    .then(json => console.log(json))
-    .catch(error => console.log(error))
+const theme = createMuiTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      light: '#7C8aaa',
+      main: '#46598a',
+      dark: '#374876',
+      contrastText: '#fff'
+    },
+    secondary: {
+      light: '#55bde5',
+      main: '#1a94ce',
+      dark: '#1282bb',
+      contrastText: '#fff'
+    }
+  }
+})
 
+class App extends Component {
+  state = ({
+    scannedUrl: null
+  })
+
+  handleScan = data => {
+    this.setState({ scannedUrl: data })
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <Router>
+            <Switch>
+              <Route path='/products' render={
+                () => (<ProductsPage onScan={this.handleScan} scannedUrl={this.state.scannedUrl} />)
+              }/>
+              <Route path='/help' component={HelpPage} />
+              <Route path='/' component={DashboardPage} />
+            </Switch>
+          </Router>
+        </MuiThemeProvider>
       </div>
     );
   }
 }
 
-export default App;
+export default App
