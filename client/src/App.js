@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-
 import HelpPage from './pages/HelpPage'
 import DashboardPage from './pages/DashboardPage'
 import ProductsPage from './pages/ProductsPage'
@@ -28,6 +27,7 @@ const theme = createMuiTheme({
 
 class App extends Component {
   state = ({
+    products: [],
     scannedUrl: null
   })
 
@@ -35,7 +35,29 @@ class App extends Component {
     this.setState({ scannedUrl: data })
   }
 
+  fetch(endpoint) {
+    return window.fetch(endpoint)
+      .then(response => response.json())
+      .catch(error => console.log(error))
+  }
+
+  getProducts () {
+    this.fetch('/api/products')
+      .then(products => {
+        if (products.length) {
+          this.setState({ products: products })
+        } else {
+          this.setState({ products: [] })
+        }
+      })
+  }
+
+  componentDidMount () {
+    this.getProducts()
+  }
+
   render() {
+    const { products, scannedUrl } = this.state
     return (
       <div className="App">
         <MuiThemeProvider theme={theme}>
@@ -43,7 +65,7 @@ class App extends Component {
           <Router>
             <Switch>
               <Route path='/products' render={
-                () => (<ProductsPage onScan={this.handleScan} scannedUrl={this.state.scannedUrl} />)
+                () => (<ProductsPage onScan={this.handleScan} products={products} scannedUrl={scannedUrl} />)
               }/>
               <Route path='/help' component={HelpPage} />
               <Route path='/' component={DashboardPage} />

@@ -43,7 +43,7 @@ function ProductCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to={product.link}>
+        <Link to={`/products/${product.id}`}>
           <Button size="small">Learn More</Button>
         </Link>
       </CardActions>

@@ -32,7 +32,7 @@ const styles = {
 }
 
 function ProductsPage(props) {
-  const { classes, onScan, scannedUrl } = props
+  const { classes, onScan, products, scannedUrl } = props
   return (
     <React.Fragment>
       <Switch>
@@ -92,7 +92,7 @@ function ProductsPage(props) {
             <React.Fragment>
               <AppBar title="Products" />
               <main>
-                <ProductList />
+                <ProductList products={products} />
               </main>
             </React.Fragment>
           )}
