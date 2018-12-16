@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown'
+
 import CalendarIcon from '@material-ui/icons/InsertInvitation'
 import DirectionsIcon from '@material-ui/icons/Security'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -51,9 +53,9 @@ class ControlledExpansionPanels extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>
-              <span dangerouslySetInnerHTML={{__html: product.information}} />
-            </Typography>
+            <div>
+              <ReactMarkdown source={product.information} skipHtml={true}/>
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
 
@@ -83,9 +85,9 @@ class ControlledExpansionPanels extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>
-              <span dangerouslySetInnerHTML={{__html: product.indications}} />
-            </Typography>
+            <div>
+              <ReactMarkdown source={product.indications} skipHtml={true}/>
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
 
@@ -97,9 +99,9 @@ class ControlledExpansionPanels extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>
-              <span dangerouslySetInnerHTML={{__html: product.directions}} />
-            </Typography>
+            <div>
+              <ReactMarkdown source={product.directions} skipHtml={true}/>
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
 
