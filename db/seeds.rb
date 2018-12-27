@@ -5,4 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+admin_email = 'admin@example.com'
+
+if Rails.env.development? and not (AdminUser.find_by email: admin_email)
+  AdminUser.create!(email: admin_email, password: 'password', password_confirmation: 'password')
+end
+
+if Region.count.zero?
+  Region.create! [
+    { name: 'UAE', code: 2 },
+    { name: 'Qatar', code: 4 },
+    { name: 'Bahrain', code: 6 },
+    { name: 'Oman', code: 8 }
+  ]
+end

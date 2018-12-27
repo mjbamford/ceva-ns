@@ -1,0 +1,2 @@
+class ProductsRegion < ApplicationRecord
+end
