@@ -12,6 +12,8 @@ ActiveAdmin.register Product do
   #   permitted
   # end
 
+  actions :all, except: [ :destroy ]
+
   permit_params :name, :description, :information, :indications, :directions, :image
 
   filter :name
@@ -31,7 +33,9 @@ ActiveAdmin.register Product do
       column :name
       column :description
       column :updated_at
-      actions
+      actions do |product|
+        link_to 'Stock', admin_product_stocks_path(product)
+      end
   end
 
   show do
