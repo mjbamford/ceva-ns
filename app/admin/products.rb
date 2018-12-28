@@ -11,6 +11,7 @@ ActiveAdmin.register Product do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
   permit_params :name, :description, :information, :indications, :directions, :image
 
   filter :name
@@ -59,5 +60,9 @@ ActiveAdmin.register Product do
       input :directions
     end
     actions
+  end
+
+  sidebar "Stock", only: %i[ show edit ] do
+    link_to "Stock", admin_product_stocks_path(resource)
   end
 end
