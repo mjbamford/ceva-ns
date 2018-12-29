@@ -22,6 +22,7 @@ ActiveAdmin.register Stock do
   end
 
   form do |f|
+    semantic_errors
     inputs "Stock details" do
       input :region, as: :radio
       options = { as: :file }
