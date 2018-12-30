@@ -15,8 +15,7 @@ ActiveAdmin.register Datasheet do
     column :region
     column :code
     column('QrCode Url') do |ds|
-      url = codified_datasheet_url ds.code
-      link_to url, url
+      link_to codified_datasheet_url ds.code
     end
     column('Preview') do |ds|
       if ds.pdf.attached?
@@ -38,7 +37,7 @@ ActiveAdmin.register Datasheet do
     attributes_table do
       row :product
       row :region
-      row('qrcode url') { link_to url, url }
+      row('qrcode url') { link_to url }
       row('qrcode') { image_tag qrcode_image url }
       if resource.pdf.attached?
         path = rails_blob_path resource.pdf, disposition: 'attachment'
