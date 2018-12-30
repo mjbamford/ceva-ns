@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'q/:code', to: 'datasheets#show',
     as: 'codified_datasheet', constraints: { format: 'json'}
 
-  get '*path', to: "application#index", constraints: ->(req) do
+  get '*path', to: "application#index", constraints: -> (req) do
     !req.xhr? && req.format.html?
   end
 end

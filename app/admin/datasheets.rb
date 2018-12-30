@@ -15,7 +15,7 @@ ActiveAdmin.register Datasheet do
     column :region
     column :code
     column('QrCode Url') do |ds|
-      url = codified_datasheet_url ds.code, format: 'json'
+      url = codified_datasheet_url ds.code
       link_to url, url
     end
     column('Preview') do |ds|
