@@ -6,6 +6,6 @@ class ProductsController < ApiController
   end
 
   private def set_product
-    @product = Product.find(params[:id])
+    @product = Product.includes(image_attachment: :blob).find(params[:id])
   end
 end
