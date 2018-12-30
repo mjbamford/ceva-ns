@@ -7,13 +7,10 @@ Rails.application.routes.draw do
     resources :datasheets, param: :code, only: :show
   end
 
+  get 'q/:code', to: 'datasheets#show',
+    as: 'codified_datasheet', constraints: { format: 'json'}
+
   get '*path', to: "application#index", constraints: ->(req) do
     !req.xhr? && req.format.html?
   end
-
-  # This route always to be below the catch-all routes above; it is provided
-  # here merely for the named route helper. The path '/q/:code' is to be
-  # catched by the catch-all and routed to application#index for react
-  # handling.
-  get 'q/:code', to: 'datasheets#show', as: 'codified_datasheet'
 end
