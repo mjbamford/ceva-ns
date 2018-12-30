@@ -1,13 +1,33 @@
 ActiveAdmin.register Stock do
   belongs_to :product
-  navigation_menu :product
-
+  actions :all, except: :destroy
   permit_params :product_id, :region_id, :datasheet
+
+  filter :code
+  filter :created_at
+  filter :updated_at
+
+  index do
+    id_column
+    column :code
+    column('Url') do |stock|
+      url = codified_stock_url stock.code
+      link_to url, url
+    end
+    column :product
+    column :region
+    column :updated_at
+    actions
+  end
 
   show do
     attributes_table do
       row :product
       row :region
+      row('url') do
+        url = codified_stock_url resource.code
+        link_to url, url
+      end
       if resource.datasheet.attached?
         path = rails_blob_path resource.datasheet, disposition: 'attachment'
         html = if resource.datasheet.previewable?
@@ -17,7 +37,6 @@ ActiveAdmin.register Stock do
         end
         row('datasheet') { link_to html, path }
       end
-      row :code
     end
   end
 
@@ -26,7 +45,7 @@ ActiveAdmin.register Stock do
     inputs "Stock details" do
       input :region, as: :radio
       options = { as: :file }
-      if f.object.datasheet.previewable?
+      if f.object.datasheet.try(:previewable?)
         options[:hint] = image_tag f.object.datasheet.preview resize: '300x300'
       end
       input :datasheet, options

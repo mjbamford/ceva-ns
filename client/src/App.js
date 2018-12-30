@@ -6,6 +6,7 @@ import HelpPage from './pages/HelpPage'
 import DashboardPage from './pages/DashboardPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ProductsPage from './pages/ProductsPage'
+import StockPage from './pages/StockPage'
 import './App.css';
 
 const theme = createMuiTheme({
@@ -65,6 +66,12 @@ class App extends Component {
           <CssBaseline />
           <Router>
             <Switch>
+              <Route path='/q/:code' render={
+                ({ match }) => {
+                  const { code } = match.params
+                  return (<StockPage code={code} />)
+                }
+              }/>
               <Route path='/products' render={
                 () => (<ProductsPage onScan={this.handleScan} products={products} scannedUrl={scannedUrl} />)
               }/>

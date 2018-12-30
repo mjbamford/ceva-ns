@@ -28,3 +28,7 @@
 
 # Ignore database dumps
 /db/dumps
+
+# Ignore env files
+.env*
+!.env.sample
