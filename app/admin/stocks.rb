@@ -21,13 +21,12 @@ ActiveAdmin.register Stock do
   end
 
   show do
+    url = codified_stock_url resource.code
     attributes_table do
       row :product
       row :region
-      row('url') do
-        url = codified_stock_url resource.code
-        link_to url, url
-      end
+      row('url') { link_to url, url }
+      row('qr code') { image_tag qrcode_image url }
       if resource.datasheet.attached?
         path = rails_blob_path resource.datasheet, disposition: 'attachment'
         html = if resource.datasheet.previewable?
