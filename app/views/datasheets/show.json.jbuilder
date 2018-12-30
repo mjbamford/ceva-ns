@@ -1,7 +1,7 @@
 product = datasheet.product
 json.(product, :id, :name, :description)
 json.(product, :information, :indications, :directions)
-json.imageUrl rails_blob_url product.image
+json.imageUrl url_for product.image.variant size: '128x128'
 json.updatedAt product.updated_at
 json.brochures product.brochures.map do |brochure|
   json.(brochure, :id, :name, :language)

@@ -41,7 +41,6 @@ class ControlledExpansionPanels extends React.Component {
   render() {
     const { classes, product } = this.props;
     const { expanded } = this.state;
-    console.log(product)
 
     return (
       <div className={classes.root}>

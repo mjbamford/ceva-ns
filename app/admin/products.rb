@@ -17,12 +17,6 @@ ActiveAdmin.register Product do
   filter :indications
   filter :directions
 
-  # controller do
-  #   def scoped_collection
-  #     super.includes datasheets: :region
-  #   end
-  # end
-
   index do
       id_column
       column "Image" do |product|
@@ -30,9 +24,6 @@ ActiveAdmin.register Product do
           image_tag product.image.variant resize: '100x100'
         end
       end
-      # column('Datasheet') do |product|
-      #   product.datasheets.map { |ds| ds.region.name }.join(', ')
-      # end
       column :name
       column :description
       column :updated_at
@@ -65,7 +56,7 @@ ActiveAdmin.register Product do
       input :name
       opts = { as: :file }
       unless f.object.new_record?
-        opts[:hint] = image_tag(f.object.image.variant(resize: '300x300'))
+        opts[:hint] = image_tag f.object.image.variant resize: '300x300'
       end
       input :image, opts
       input :brochures, as: :check_boxes
