@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography';
 import QrReader from 'react-qr-reader'
@@ -29,13 +28,12 @@ const styles = {
 class QrScanner extends Component {
   constructor(props) {
     super(props)
-    this.state = { delay: 250, result: null }
+    this.state = { delay: 250, url: null }
   }
 
   handleScan = data => {
     if (data) {
-      this.setState({ result: data })
-      this.props.onScan(data)
+      this.setState({ url: data })
     }
   }
   handleError = err => {
@@ -43,31 +41,27 @@ class QrScanner extends Component {
   }
 
   render() {
-    const { classes, redirectTo } = this.props
+    const { classes } = this.props
+    const { url, delay } = this.state
+
+    if (!!url) {
+      window.location = url
+    }
+
     return (
-      !this.state.result ?
-        (<React.Fragment>
-          <QrReader
-            delay={this.state.delay}
-            onError={this.handleError}
-            onScan={this.handleScan}
-            facingMode="environment"
-            className={classes.qrReader}
-            showViewFinder={false}
-          />
-          {
-            !!this.state.result ? (
-              <p>{this.state.result}</p>
-            ) : (
-                <Typography paragraph variant="body1" color="textSecondary">
-                  Point at Code to Scan
-                            </Typography>
-              )
-          }
-        </React.Fragment>
-        ) : (
-          <Redirect push to={redirectTo} />
-        )
+      <React.Fragment>
+        <QrReader
+          delay={delay}
+          onError={this.handleError}
+          onScan={this.handleScan}
+          facingMode="environment"
+          className={classes.qrReader}
+          showViewFinder={false}
+        />
+        <Typography paragraph variant="body1" color="textSecondary">
+          Point at Code to Scan
+        </Typography>
+      </React.Fragment>
     )
   }
 }

@@ -46,7 +46,7 @@ function ProductsPage(props) {
                 </Link>
               </AppBar>
               <main className={classes.main}>
-                <QrScanner onScan={onScan} redirectTo='/products/666' />
+                <QrScanner />
                 <Logo />
               </main>
             </React.Fragment>

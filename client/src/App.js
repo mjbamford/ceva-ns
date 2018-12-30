@@ -28,14 +28,7 @@ const theme = createMuiTheme({
 })
 
 class App extends Component {
-  state = ({
-    products: [],
-    scannedUrl: null
-  })
-
-  handleScan = data => {
-    this.setState({ scannedUrl: data })
-  }
+  state = ({ products: [] })
 
   fetch(endpoint) {
     return window.fetch(endpoint)
@@ -59,7 +52,7 @@ class App extends Component {
   }
 
   render() {
-    const { products, scannedUrl } = this.state
+    const { products } = this.state
     return (
       <div className="App">
         <MuiThemeProvider theme={theme}>
@@ -73,7 +66,7 @@ class App extends Component {
                 }
               }/>
               <Route path='/products' render={
-                () => (<ProductsPage onScan={this.handleScan} products={products} scannedUrl={scannedUrl} />)
+                () => (<ProductsPage products={products} />)
               }/>
               <Route path='/help' component={HelpPage} />
               <Route path='/' component={DashboardPage} />
@@ -82,7 +75,7 @@ class App extends Component {
           </Router>
         </MuiThemeProvider>
       </div>
-    );
+    )
   }
 }
 
