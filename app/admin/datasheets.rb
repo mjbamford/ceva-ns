@@ -1,5 +1,5 @@
 ActiveAdmin.register Datasheet do
-  belongs_to :product
+  belongs_to :product, optional: true
   actions :all, except: :destroy
   permit_params :product_id, :region_id, :pdf
 
@@ -54,6 +54,7 @@ ActiveAdmin.register Datasheet do
   form do |f|
     semantic_errors *f.object.errors.keys
     inputs "Datasheet details" do
+      input :product, as: :select
       input :region, as: :radio
       options = { as: :file }
       if f.object.pdf.try(:previewable?)
