@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_30_030641) do
+ActiveRecord::Schema.define(version: 2018_12_30_102704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_030641) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_datasheets_on_code", unique: true
+    t.index ["product_id", "region_id"], name: "index_datasheets_on_product_id_and_region_id", unique: true
     t.index ["product_id"], name: "index_datasheets_on_product_id"
     t.index ["region_id"], name: "index_datasheets_on_region_id"
   end
@@ -109,18 +110,6 @@ ActiveRecord::Schema.define(version: 2018_12_30_030641) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_regions_on_name", unique: true
-  end
-
-  create_table "stocks", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "region_id", null: false
-    t.string "code", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["code"], name: "index_stocks_on_code", unique: true
-    t.index ["product_id", "region_id"], name: "index_stocks_on_product_id_and_region_id", unique: true
-    t.index ["product_id"], name: "index_stocks_on_product_id"
-    t.index ["region_id"], name: "index_stocks_on_region_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

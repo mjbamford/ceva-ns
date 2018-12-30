@@ -53,7 +53,7 @@ ActiveAdmin.register Datasheet do
   end
 
   form do |f|
-    semantic_errors
+    semantic_errors *f.object.errors.keys
     inputs "Datasheet details" do
       input :region, as: :radio
       options = { as: :file }

@@ -3,6 +3,7 @@ class Datasheet < ApplicationRecord
   belongs_to :product
   belongs_to :region
   validates :product, :region, :code, presence: true
+  validates :region, uniqueness: { scope: :product_id }
   validates :code, uniqueness: true
 
   def initialize *args
