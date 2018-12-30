@@ -18,6 +18,7 @@ ActiveAdmin.register Brochure do
         else
           'download'
         end
+        link_to html, path
       end
     end
     column :updated_at
@@ -27,7 +28,7 @@ ActiveAdmin.register Brochure do
   show do
     attributes_table do
       row :name
-      row('language') { |brochure| brochure.language.capitalize }
+      row('language') { resource.language.capitalize }
       if resource.pdf.attached?
         path = rails_blob_path resource.pdf, disposition: 'attachment'
         html = if resource.pdf.previewable?

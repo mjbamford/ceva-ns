@@ -3,6 +3,8 @@ ActiveAdmin.register Datasheet do
   actions :all, except: :destroy
   permit_params :product_id, :region_id, :pdf
 
+  includes :product, :region
+
   filter :code
   filter :created_at
   filter :updated_at
@@ -10,12 +12,23 @@ ActiveAdmin.register Datasheet do
   index do
     id_column
     column :code
+    column :product
+    column :region
     column('Url') do |ds|
       url = codified_datasheet_url ds.code
       link_to url, url
     end
-    column :product
-    column :region
+    column('Preview') do |ds|
+      if ds.pdf.attached?
+        path = rails_blob_path ds.pdf, disposition: 'attachment'
+        html = if ds.pdf.previewable?
+          image_tag ds.pdf.preview resize: '100x100'
+        else
+          'download'
+        end
+        link_to html, path
+      end
+    end
     column :updated_at
     actions
   end
