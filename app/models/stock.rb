@@ -1,5 +1,5 @@
 class Stock < ApplicationRecord
-  has_one_attached :datasheet
+  has_one_attached :pdf
   belongs_to :product
   belongs_to :region
   validates :product, :region, :code, presence: true

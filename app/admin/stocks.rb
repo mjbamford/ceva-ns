@@ -1,7 +1,7 @@
 ActiveAdmin.register Stock do
   belongs_to :product
   actions :all, except: :destroy
-  permit_params :product_id, :region_id, :datasheet
+  permit_params :product_id, :region_id, :pdf
 
   filter :code
   filter :created_at
@@ -27,14 +27,14 @@ ActiveAdmin.register Stock do
       row :region
       row('url') { link_to url, url }
       row('qr code') { image_tag qrcode_image url }
-      if resource.datasheet.attached?
-        path = rails_blob_path resource.datasheet, disposition: 'attachment'
-        html = if resource.datasheet.previewable?
-          image_tag resource.datasheet.preview resize: '300x300'
+      if resource.pdf.attached?
+        path = rails_blob_path resource.pdf, disposition: 'attachment'
+        html = if resource.pdf.previewable?
+          image_tag resource.pdf.preview resize: '300x300'
         else
           'download'
         end
-        row('datasheet') { link_to html, path }
+        row('pdf') { link_to html, path }
       end
     end
   end
@@ -44,10 +44,10 @@ ActiveAdmin.register Stock do
     inputs "Stock details" do
       input :region, as: :radio
       options = { as: :file }
-      if f.object.datasheet.try(:previewable?)
-        options[:hint] = image_tag f.object.datasheet.preview resize: '300x300'
+      if f.object.pdf.try(:previewable?)
+        options[:hint] = image_tag f.object.pdf.preview resize: '300x300'
       end
-      input :datasheet, options
+      input :pdf, options
     end
     actions
   end
