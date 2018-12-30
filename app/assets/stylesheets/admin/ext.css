@@ -1,0 +1,10 @@
+select {
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+  appearance: menulist;
+  border-radius: inherit;
+}
+
+div.field_with_errors {
+  display: inline;
+}
