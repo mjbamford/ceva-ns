@@ -60,7 +60,7 @@ ActiveAdmin.register Product do
   end
 
   form html: { multipart: true } do |f|
-    semantic_errors
+    semantic_errors *f.object.errors.keys
     inputs do
       input :name
       opts = { as: :file }
