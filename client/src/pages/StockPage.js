@@ -16,7 +16,7 @@ class StockPage extends Component {
 
   getProduct () {
     const { code } = this.state
-    this.fetch(`/api/stocks/${code}`)
+    this.fetch(`/api/datasheets/${code}`)
       .then(product => {
         if (product) {
           this.setState({ product: product })

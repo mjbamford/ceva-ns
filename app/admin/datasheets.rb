@@ -1,4 +1,4 @@
-ActiveAdmin.register Stock do
+ActiveAdmin.register Datasheet do
   belongs_to :product
   actions :all, except: :destroy
   permit_params :product_id, :region_id, :pdf
@@ -10,8 +10,8 @@ ActiveAdmin.register Stock do
   index do
     id_column
     column :code
-    column('Url') do |stock|
-      url = codified_stock_url stock.code
+    column('Url') do |ds|
+      url = codified_datasheet_url ds.code
       link_to url, url
     end
     column :product
@@ -21,7 +21,7 @@ ActiveAdmin.register Stock do
   end
 
   show do
-    url = codified_stock_url resource.code
+    url = codified_datasheet_url resource.code
     attributes_table do
       row :product
       row :region
@@ -41,7 +41,7 @@ ActiveAdmin.register Stock do
 
   form do |f|
     semantic_errors
-    inputs "Stock details" do
+    inputs "Datasheet details" do
       input :region, as: :radio
       options = { as: :file }
       if f.object.pdf.try(:previewable?)

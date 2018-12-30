@@ -80,6 +80,17 @@ ActiveRecord::Schema.define(version: 2018_12_30_030641) do
     t.index ["product_id"], name: "index_brochures_products_on_product_id"
   end
 
+  create_table "datasheets", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "region_id", null: false
+    t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_datasheets_on_code", unique: true
+    t.index ["product_id"], name: "index_datasheets_on_product_id"
+    t.index ["region_id"], name: "index_datasheets_on_region_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"

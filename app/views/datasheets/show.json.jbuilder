@@ -1,4 +1,4 @@
-product = stock.product
+product = datasheet.product
 json.(product, :id, :name, :description)
 json.(product, :information, :indications, :directions)
 json.imageUrl url_for product.image

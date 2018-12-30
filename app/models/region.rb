@@ -1,3 +1,3 @@
 class Region < ApplicationRecord
-  has_many :stocks
+  has_many :datasheets
 end

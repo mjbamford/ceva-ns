@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   scope '/api' do
     resources :products, only: %i[ index show ]
-    resources :stocks, param: :code, only: :show
+    resources :datasheets, param: :code, only: :show
   end
 
   get '*path', to: "application#index", constraints: ->(req) do
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   # here merely for the named route helper. The path '/q/:code' is to be
   # catched by the catch-all and routed to application#index for react
   # handling.
-  get 'q/:code', to: 'stocks#show', as: 'codified_stock'
+  get 'q/:code', to: 'datasheets#show', as: 'codified_datasheet'
 end

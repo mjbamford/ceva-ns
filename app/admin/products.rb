@@ -4,6 +4,8 @@ ActiveAdmin.register Product do
 
   actions :all, except: [ :destroy ]
 
+  includes :brochures, datasheets: :region
+
   permit_params do
     permitted = %i[ name description information indications directions image ]
     permitted << { brochure_ids: [] }
@@ -15,11 +17,11 @@ ActiveAdmin.register Product do
   filter :indications
   filter :directions
 
-  controller do
-    def scoped_collection
-      super.includes stocks: :region
-    end
-  end
+  # controller do
+  #   def scoped_collection
+  #     super.includes datasheets: :region
+  #   end
+  # end
 
   index do
       id_column
@@ -28,14 +30,14 @@ ActiveAdmin.register Product do
           image_tag product.image.variant resize: '100x100'
         end
       end
-      column('Stock') do |product|
-        product.stocks.map { |stock| stock.region.name }.join(', ')
-      end
+      # column('Datasheet') do |product|
+      #   product.datasheets.map { |ds| ds.region.name }.join(', ')
+      # end
       column :name
       column :description
       column :updated_at
       actions do |product|
-        link_to 'Stock', admin_product_stocks_path(product)
+        link_to 'Datasheets', admin_product_datasheets_path(product)
       end
   end
 
@@ -75,7 +77,7 @@ ActiveAdmin.register Product do
     actions
   end
 
-  sidebar "Stock", only: %i[ show edit ] do
-    link_to "Stock", admin_product_stocks_path(resource)
+  sidebar "Datasheets", only: %i[ show edit ] do
+    link_to "Datasheets", admin_product_datasheets_path(resource)
   end
 end
