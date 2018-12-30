@@ -68,7 +68,7 @@ function DashboardPage(props) {
       <AppBar>
         {/* TODO: <Logo /> */}
         <Typography variant="title" color="inherit" className={classes.flex}>
-          Notification System
+          Ceva Care
         </Typography>
       </AppBar>
       <main className={classes.root}>

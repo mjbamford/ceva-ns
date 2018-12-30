@@ -27,7 +27,7 @@ export const drawerHeaderListItems = (
     </ListItem>
     <ListItem>
       <div>
-        <Typography variant="subheading">Notification System</Typography>
+        <Typography variant="subheading">Ceva Care</Typography>
         <Typography variant="body1">Together, beyond animal health</Typography>
       </div>
     </ListItem>
