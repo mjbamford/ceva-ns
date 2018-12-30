@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown'
-
+import BookIcon from '@material-ui/icons/Book'
 import CalendarIcon from '@material-ui/icons/InsertInvitation'
 import DirectionsIcon from '@material-ui/icons/Security'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import IndicationsIcon from '@material-ui/icons/Textsms'
 import InfoIcon from '@material-ui/icons/Info'
 import PdfIcon from '@material-ui/icons/InsertDriveFile'
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   root: {
@@ -41,6 +41,7 @@ class ControlledExpansionPanels extends React.Component {
   render() {
     const { classes, product } = this.props;
     const { expanded } = this.state;
+    console.log(product)
 
     return (
       <div className={classes.root}>
@@ -113,10 +114,29 @@ class ControlledExpansionPanels extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>
-              {product.pdfs}
-              (Links to the product's PDFs will go here)
-            </Typography>
+            <div>
+              {
+                product.brochures.map(brochure => (
+                    <div key={brochure.id}>
+                      <a href={brochure.pdfUrl}>
+                        <BookIcon />
+                        {brochure.name}
+                      </a>
+                    </div>
+                ))
+              }
+              {
+                product.datasheets.map(ds => (
+                    <div key={ds.code}>
+                      <a href={ds.pdfUrl}>
+                        <BookIcon />
+                        Datasheet
+                        {ds.name}
+                      </a>
+                    </div>
+                ))
+              }
+            </div>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div>
