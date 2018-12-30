@@ -1,20 +1,13 @@
 ActiveAdmin.register Product do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
 
   actions :all, except: [ :destroy ]
 
-  permit_params :name, :description, :information, :indications, :directions, :image
+  permit_params do
+    permitted = %i[ name description information indications directions image ]
+    permitted << { brochure_ids: [] }
+  end
 
   filter :name
   filter :description
@@ -53,6 +46,11 @@ ActiveAdmin.register Product do
       row :image do |product|
         image_tag product.image.variant resize: '300x300'
       end
+      row('Brochures') do |product|
+        table_for product.brochures do
+          column '', :full_name
+        end
+      end
       row :information
       row :indications
       row :directions
@@ -68,6 +66,7 @@ ActiveAdmin.register Product do
         opts[:hint] = image_tag(f.object.image.variant(resize: '300x300'))
       end
       input :image, opts
+      input :brochures, as: :check_boxes
       input :description
       input :information
       input :indications

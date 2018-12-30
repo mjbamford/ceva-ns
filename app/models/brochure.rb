@@ -6,6 +6,10 @@ class Brochure < ApplicationRecord
 
   before_validation :strip_whitespace
 
+  def full_name
+    "#{self.name} (#{self.language.capitalize})"
+  end
+
   private def strip_whitespace
     self.name.strip!
   end
