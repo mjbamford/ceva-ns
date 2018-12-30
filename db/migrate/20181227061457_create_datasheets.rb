@@ -7,6 +7,7 @@ class CreateDatasheets < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
+    add_index :datasheets, [ :product_id, :region_id ], unique: true
     add_index :datasheets, :code, unique: true
   end
 end

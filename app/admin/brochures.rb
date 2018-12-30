@@ -45,7 +45,7 @@ ActiveAdmin.register Brochure do
     semantic_errors *f.object.errors.keys
     inputs do
       input :name
-      input :language, as: :radio, collection: [['English', 'english'], ['Arabic', 'arabic']]
+      input :language, as: :radio, collection: options_for_language
       options = { as: :file }
       if f.object.pdf.try(:previewable?)
         options[:hint] = image_tag f.object.pdf.preview resize: '300x300'

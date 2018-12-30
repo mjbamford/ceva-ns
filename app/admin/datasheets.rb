@@ -11,9 +11,10 @@ ActiveAdmin.register Datasheet do
 
   index do
     id_column
+    column :code
     column :product
     column :region
-    column :code
+    column('Language') { |ds| ds.language.capitalize }
     column('QrCode Url') do |ds|
       link_to codified_datasheet_url ds.code
     end
@@ -37,6 +38,7 @@ ActiveAdmin.register Datasheet do
     attributes_table do
       row :product
       row :region
+      row('language') { resource.language.capitalize }
       row('qrcode url') { link_to url }
       row('qrcode') { image_tag qrcode_image url }
       if resource.pdf.attached?
@@ -56,6 +58,7 @@ ActiveAdmin.register Datasheet do
     inputs "Datasheet details" do
       input :product, as: :select
       input :region, as: :radio
+      input :language, as: :radio, collection: options_for_language
       options = { as: :file }
       if f.object.pdf.try(:previewable?)
         options[:hint] = image_tag f.object.pdf.preview resize: '300x300'

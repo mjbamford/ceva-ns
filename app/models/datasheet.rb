@@ -2,7 +2,7 @@ class Datasheet < ApplicationRecord
   has_one_attached :pdf
   belongs_to :product
   belongs_to :region
-  validates :product, :region, :code, presence: true
+  validates :product, :region, :code, :language, presence: true
   validates :region, uniqueness: { scope: :product_id }
   validates :code, uniqueness: true
 
