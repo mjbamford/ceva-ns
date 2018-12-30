@@ -16,7 +16,8 @@ ActiveAdmin.register Datasheet do
     column :region
     column('Language') { |ds| ds.language.capitalize }
     column('QrCode Url') do |ds|
-      link_to codified_datasheet_url ds.code
+      url = codified_datasheet_url ds.code, port: ENV['CLIENT_PORT']
+      link_to url, url, target: '_blank'
     end
     column('Preview') do |ds|
       if ds.pdf.attached?
@@ -34,12 +35,12 @@ ActiveAdmin.register Datasheet do
   end
 
   show do
-    url = codified_datasheet_url resource.code
+    url = codified_datasheet_url resource.code, port: ENV['CLIENT_PORT']
     attributes_table do
       row :product
       row :region
       row('language') { resource.language.capitalize }
-      row('qrcode url') { link_to url }
+      row('qrcode url') { link_to url, url, target: '_blank' }
       row('qrcode') { image_tag qrcode_image url }
       if resource.pdf.attached?
         path = rails_blob_path resource.pdf, disposition: 'attachment'
