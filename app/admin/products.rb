@@ -63,7 +63,11 @@ ActiveAdmin.register Product do
     semantic_errors
     inputs do
       input :name
-      input :image, as: :file, hint: image_tag(f.object.image.variant(resize: '300x300'))
+      opts = { as: :file }
+      unless f.object.new_record?
+        opts[:hint] = image_tag(f.object.image.variant(resize: '300x300'))
+      end
+      input :image, opts
       input :description
       input :information
       input :indications
