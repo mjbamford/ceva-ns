@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 2018_12_30_030641) do
   end
 
   create_table "brochures_products", force: :cascade do |t|
-    t.bigint "brochure_id"
-    t.bigint "product_id"
+    t.bigint "brochure_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brochure_id", "product_id"], name: "index_brochures_products_on_brochure_id_and_product_id", unique: true

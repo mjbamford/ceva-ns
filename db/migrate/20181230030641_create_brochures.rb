@@ -9,8 +9,8 @@ class CreateBrochures < ActiveRecord::Migration[5.2]
     add_index :brochures, [ :name, :language ], unique: true
 
     create_table :brochures_products do |t|
-      t.references :brochure, index: true
-      t.references :product, index: true
+      t.references :brochure, null: false
+      t.references :product, index: true, null: false
       t.timestamps
     end
 
