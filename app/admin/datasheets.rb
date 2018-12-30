@@ -11,11 +11,11 @@ ActiveAdmin.register Datasheet do
 
   index do
     id_column
-    column :code
     column :product
     column :region
-    column('Url') do |ds|
-      url = codified_datasheet_url ds.code
+    column :code
+    column('QrCode Url') do |ds|
+      url = codified_datasheet_url ds.code, format: 'json'
       link_to url, url
     end
     column('Preview') do |ds|
@@ -38,8 +38,8 @@ ActiveAdmin.register Datasheet do
     attributes_table do
       row :product
       row :region
-      row('url') { link_to url, url }
-      row('qr code') { image_tag qrcode_image url }
+      row('qrcode url') { link_to url, url }
+      row('qrcode') { image_tag qrcode_image url }
       if resource.pdf.attached?
         path = rails_blob_path resource.pdf, disposition: 'attachment'
         html = if resource.pdf.previewable?
