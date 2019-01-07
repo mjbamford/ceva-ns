@@ -1,7 +1,7 @@
 ActiveAdmin.register Datasheet do
   belongs_to :product, optional: true
   actions :all, except: :destroy
-  permit_params :product_id, :region_id, :pdf
+  permit_params :product_id, :region_id, :language, :pdf
 
   includes :product, :region
 
