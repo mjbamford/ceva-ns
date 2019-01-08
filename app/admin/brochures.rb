@@ -10,6 +10,9 @@ ActiveAdmin.register Brochure do
     id_column
     column :name
     column('Language') { |brochure| brochure.language.capitalize }
+    column('Filename') do |brochure|
+      brochure.pdf.attached? ? brochure.pdf.filename.to_s : '&nbsp;'.html_safe
+    end
     column('Preview') do |brochure|
       if brochure.pdf.attached?
         path = rails_blob_path brochure.pdf, disposition: 'attachment'
@@ -36,6 +39,7 @@ ActiveAdmin.register Brochure do
         else
           'download'
         end
+        row('filename') { resource.pdf.filename.to_s }
         row('pdf') { link_to html, path }
       end
     end

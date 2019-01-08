@@ -19,14 +19,17 @@ ActiveAdmin.register Datasheet do
       url = codified_datasheet_url ds.code, port: ENV['CLIENT_PORT']
       link_to url, url, target: '_blank'
     end
+    column('Filename') do |ds|
+      ds.pdf.attached? ? ds.pdf.filename.to_s : '&nbsp;'.html_safe
+    end
     column('Preview') do |ds|
       if ds.pdf.attached?
         path = rails_blob_path ds.pdf, disposition: 'attachment'
         html = if ds.pdf.previewable?
-          image_tag ds.pdf.preview resize: '100x100'
-        else
-          'download'
-        end
+                 image_tag ds.pdf.preview resize: '100x100'
+               else
+                 'download'
+               end
         link_to html, path
       end
     end
@@ -45,10 +48,11 @@ ActiveAdmin.register Datasheet do
       if resource.pdf.attached?
         path = rails_blob_path resource.pdf, disposition: 'attachment'
         html = if resource.pdf.previewable?
-          image_tag resource.pdf.preview resize: '300x300'
-        else
-          'download'
-        end
+                 image_tag resource.pdf.preview resize: '300x300'
+               else
+                 'download'
+               end
+        row('filename') { resource.pdf.filename.to_s }
         row('pdf') { link_to html, path }
       end
     end
