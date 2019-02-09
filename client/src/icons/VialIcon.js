@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default function (props) {
-  const classes = props.classes || {}
+  const className = props.className || {}
   return (
     <div className='dashboard-icon' >
-      <img className={classes.icon} src='/images/icons/vial-icon.png' alt='Vial Icon'/>
+      <img className={className} src='/images/icons/vial-icon.png' alt='Vial Icon'/>
     </div>
   )
 }

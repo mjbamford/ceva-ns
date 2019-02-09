@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles'
 import CheckCircle from '@material-ui/icons/CheckCircle'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import QrScanIcon from '@material-ui/icons/Fullscreen'
 import Typography from '@material-ui/core/Typography'
 import VialIcon from '../icons/VialIcon'
@@ -21,11 +20,12 @@ const styles = {
     color: 'inherit'
   },
   tile: {
+    marginBottom: '1.2rem',
     '& p': {
       whiteSpace: 'nowrap',
       textAlign: 'center'
     },
-    '& svg': {
+    '& svg, & img': {
       display: 'block',
       margin: '0 auto'
     }
@@ -41,23 +41,21 @@ const styles = {
   }
 }
 
-const DashboardVialIcon = withStyles(styles)(VialIcon)
-
 function DashboardPage(props) {
   const { classes } = props
   const tiles = [
     {
-      icon: <QrScanIcon style={{ fontSize: 56 }} />,
+      icon: <QrScanIcon className={classes.icon}/>,
       caption: 'Scan QR Code',
       path: '/products/scan'
     },
     {
-      icon: <CheckCircle style={{ fontSize: 56 }} />,
+      icon: <CheckCircle className={classes.icon}/>,
       caption: 'Stock Check',
       path: '/products/check'
     },
     {
-      icon: <DashboardVialIcon />,
+      icon: <VialIcon className={classes.icon}/>,
       caption: 'Products',
       path: '/products'
     }
@@ -72,12 +70,12 @@ function DashboardPage(props) {
         </Typography>
       </AppBar>
       <main className={classes.root}>
-        <GridList cellHeight='auto' className={classes.gridList} col={3}>
+        <GridList cellHeight='auto' col={3}>
           {
             tiles.map((tile, index) => (
               <GridListTile key={index} className={classes.tile} cols={1}>
                 <Link to={tile.path}>
-                  <ListItemIcon>{tile.icon}</ListItemIcon>
+                  {tile.icon}
                   <Typography>{tile.caption}</Typography>
                 </Link>
               </GridListTile>
