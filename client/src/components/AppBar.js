@@ -1,8 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import { withStyles } from '@material-ui/core/styles'
-// import AccountCircle from '@material-ui/icons/AccountCircle'
 import AppBar from '@material-ui/core/AppBar'
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton'
@@ -11,8 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-
-import { drawerHeaderListItems, drawerListItems } from './DrawerListItems'
+import { DrawerHeaderListItems, DrawerListItems } from './DrawerListItems'
 
 const styles = {
   root: {
@@ -44,9 +41,9 @@ class MenuAppBar extends React.Component {
     const drawerList = (
       <div className={classes.list}>
         <List>
-          {drawerHeaderListItems}
+          <DrawerHeaderListItems />
           <Divider />
-          {drawerListItems}
+          <DrawerListItems />
         </List>
       </div>
     )
