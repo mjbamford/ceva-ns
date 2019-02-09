@@ -6,6 +6,7 @@ import HelpPage from './pages/HelpPage'
 import DashboardPage from './pages/DashboardPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ProductsPage from './pages/ProductsPage'
+import SessionsPage from './pages/SessionsPage'
 import StockPage from './pages/StockPage'
 import './App.css';
 
@@ -68,6 +69,7 @@ class App extends Component {
               <Route path='/products' render={
                 () => (<ProductsPage products={products} />)
               }/>
+              <Route path='/sessions' component={SessionsPage} />
               <Route path='/help' component={HelpPage} />
               <Route path='/' component={DashboardPage} />
               <Route component={NotFoundPage} />
