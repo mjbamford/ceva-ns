@@ -118,8 +118,7 @@ class ControlledExpansionPanels extends React.Component {
                 product.brochures.map(brochure => (
                     <div key={brochure.id}>
                       <a href={brochure.pdfUrl}>
-                        <BookIcon />
-                        {brochure.name}
+                        <Typography>{brochure.name}</Typography>
                       </a>
                     </div>
                 ))
@@ -128,9 +127,7 @@ class ControlledExpansionPanels extends React.Component {
                 product.datasheets.map(ds => (
                     <div key={ds.code}>
                       <a href={ds.pdfUrl}>
-                        <BookIcon />
-                        Datasheet
-                        {ds.name}
+                        <Typography>{ds.name}</Typography>
                       </a>
                     </div>
                 ))
