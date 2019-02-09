@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown'
-import BookIcon from '@material-ui/icons/Book'
 import CalendarIcon from '@material-ui/icons/InsertInvitation'
 import DirectionsIcon from '@material-ui/icons/Security'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
