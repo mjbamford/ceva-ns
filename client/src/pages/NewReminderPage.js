@@ -1,16 +1,17 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '../components/AppBar'
-import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
-import ReactMarkdown from 'react-markdown'
-import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Calendar from '@material-ui/core/Divider'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper'
+import ReactMarkdown from 'react-markdown'
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   paper: {
@@ -26,8 +27,10 @@ const styles = theme => ({
 })
 
 class NewReminderPage extends React.Component {
-  constructor ({ productId }) {
-    super()
+  constructor(props) {
+    super(props)
+    const { productId } = props
+    this.horseNameRef = React.createRef()
     this.state = ({
       productId: productId,
       product: null,
@@ -59,7 +62,8 @@ class NewReminderPage extends React.Component {
   }
 
   handleClose = () => {
-    this.setState({ isNewHorseModalOpen: false })
+    const horseName = this.horseNameRef.current.value
+    this.setState({ isNewHorseModalOpen: false, horseName: horseName })
   }
 
   componentDidMount () {
@@ -75,16 +79,18 @@ class NewReminderPage extends React.Component {
         {product &&
           <Paper className={classes.paper} elevation={0}>
             <Dialog open={isNewHorseModalOpen}>
-              <DialogTitle id="form-dialog-title">Create Horse?</DialogTitle>
+              <DialogTitle id="form-dialog-title">New Horse</DialogTitle>
               <DialogContent>
                 <DialogContentText>
                   To add a horse to the reminder system, please provide its name.
                 </DialogContentText>
                 <TextField
-                  autoFocus
                   margin="dense"
                   id="horseName"
+                  name="horse[name]"
                   label="Horse Name"
+                  inputRef={this.horseNameRef}
+                  autoFocus
                   fullWidth
                 />
               </DialogContent>
