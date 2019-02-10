@@ -46,15 +46,14 @@ class ControlledExpansionPanels extends React.Component {
         <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <InfoIcon className={classes.icon}/>
-            {/* <Typography className={classes.heading}>General settings</Typography> */}
             <Typography className={classes.heading}>
               Product Information
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div>
+            <Typography>
               <ReactMarkdown source={product.information} skipHtml={true}/>
-            </div>
+            </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
 
@@ -62,7 +61,6 @@ class ControlledExpansionPanels extends React.Component {
           <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
               <CalendarIcon className={classes.icon}/>
-              {/* <Typography className={classes.heading}>Users</Typography> */}
               <Typography className={classes.heading}>
                 Notification Schedule
               </Typography>
@@ -78,15 +76,14 @@ class ControlledExpansionPanels extends React.Component {
         <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel3')}>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <IndicationsIcon className={classes.icon}/>
-            {/* <Typography className={classes.heading}>Advanced settings</Typography> */}
             <Typography className={classes.heading}>
               Indications
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div>
+            <Typography>
               <ReactMarkdown source={product.indications} skipHtml={true}/>
-            </div>
+            </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
 
@@ -98,9 +95,9 @@ class ControlledExpansionPanels extends React.Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div>
+            <Typography>
               <ReactMarkdown source={product.directions} skipHtml={true}/>
-            </div>
+            </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
 
