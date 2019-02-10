@@ -1,15 +1,16 @@
 import React from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
+import AppBar from '../components/AppBar'
 import HelpIcon from '@material-ui/icons/LiveHelp'
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography';
-import AppBar from '../components/AppBar'
-import QrScanner from '../components/QrScanner'
-import QrChecker from '../components/QrChecker'
 import Logo from '../components/Logo'
+import NewReminderPage from './NewReminderPage'
 import ProductList from '../components/ProductList'
 import ProductPage from './ProductPage'
+import QrChecker from '../components/QrChecker'
+import QrScanner from '../components/QrScanner'
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
   appBar: {
@@ -31,7 +32,7 @@ const styles = {
 }
 
 function ProductsPage(props) {
-  const { classes, onScan, products, scannedUrl } = props
+  const { classes, products, scannedUrl } = props
   return (
     <React.Fragment>
       <Switch>
@@ -64,6 +65,13 @@ function ProductsPage(props) {
             </React.Fragment>
           )}
         />
+
+        <Route path="/products/:productId/reminders/new" render={
+          ({ match }) => {
+            const { productId } = match.params
+            return (<NewReminderPage productId={productId}/>)
+          }
+        }/>
 
         <Route path='/products/:id' render={
             ({ match }) => {
